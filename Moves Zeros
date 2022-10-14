@@ -1,0 +1,21 @@
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n=nums.size();
+        int i=0;
+        int j=0;
+        while(j<n){
+                if(nums[j]==0)
+                    j++;
+                else if(nums[j]!=0){
+                    swap(nums[i++],nums[j++]);
+                }
+        }
+            
+    }
+};
+
+//In this approach I take two pointer left and right placed both initially at 0 and after that iterate through the array.
+//If right pointer is zero then it swap the left pointer and after that increment both pointer left++ and right++;
+//Else if right pointer is non-zero then only right pointer increase.
+//Hence Problem Solved
