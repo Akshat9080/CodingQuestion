@@ -1,0 +1,22 @@
+Input: s = "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+
+#code:
+
+class solution{
+public:
+    string reversestring(string s)
+    {
+    //initialize two pointer both at 0th index
+    int l=0 , r=0;
+    //start a two while loop like
+    while(l<s.size()){
+    while(r<s.size() && s[r]!=' ')
+    r++;
+    reverse(s.begin()+l , s.begin()+r);
+    l=r+1;
+    r=l;
+    }
+    return s;
+    }
+    };
