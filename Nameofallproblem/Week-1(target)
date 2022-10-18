@@ -1,0 +1,138 @@
+**********Binary Search**********
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int s=0;
+        int e=nums.size()-1;
+        int mid = s + (e-s)/2;
+        while(s<=e){
+            
+            if(nums[mid]==target){
+                return mid;
+            }
+            if(nums[mid]<target)
+                s=mid+1;
+            else e = mid - 1;
+            
+            mid =  s + (e-s)/2;
+        }
+        return -1;
+    }
+};
+
+***********First Bad Version*************
+// The API isBadVersion is defined for you.
+// bool isBadVersion(int version);
+
+class Solution {
+public:
+    int firstBadVersion(int n) {
+        int s=1;
+        int e=n;
+        int ans=n;
+        
+        while(s<=e){
+          int mid = s + (e-s)/2;
+            if(isBadVersion(mid)){
+                ans = mid;
+                e = mid -1; 
+            }
+            else{
+                s=mid+1;
+            }
+        }
+        return ans;
+    }
+};
+
+**********Search Insert Position**********
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int s=0;
+        int e=nums.size()-1;
+        int mid = s + (e-s)/2;
+        while(s<e){
+           
+           if(nums[mid]<target){
+               s = mid + 1;
+           }
+            else{ 
+                e = mid - 1;
+            }
+            if(nums[mid]==target)
+               return mid;
+            
+            mid = s + (e-s)/2;
+            
+        }
+        return mid;
+    }
+};
+
+**********Squares of a Sorted Array***********
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n=nums.size();
+        for(int i=0;i<n;i++){
+            nums[i]=nums[i]*nums[i];
+        }
+        sort(nums.begin(),nums.end());
+        return nums;
+        
+    }
+};
+
+**********Rotate Array************
+class Solution {
+public:
+ void rotate(vector<int>& nums, int k) {
+        int n=nums.size();
+        vector<int>temp(n);
+        for(int i=0; i<n; i++){
+            temp[(i+k)%n]=nums[i];
+        }
+        
+        nums= temp;
+     }
+   };
+
+*********Moves Zeros**********
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int i=0;
+        int j=0;
+        int n=nums.size();
+        while(j<n){
+            if(nums[j]==0)
+                j++;
+            else if(nums[j]!=0)
+                swap(nums[i++],nums[j++]);
+        }
+        
+    }
+};
+
+***********Two SumII*****************
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int n=numbers.size();
+        int s=0;
+        int e=n-1;
+        vector<int>ans;
+        while(s<e){
+            if(numbers[s]+numbers[e]<target) s++;
+            else if(numbers[s]+numbers[e]>target)e--;
+            
+            else {
+                ans.push_back(s+1);
+                ans.push_back(e+1);
+                s++;
+            }
+        }
+        return ans;
+    }
+};
