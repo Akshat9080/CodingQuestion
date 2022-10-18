@@ -1,0 +1,30 @@
+//iterative method
+Node*ReverseLL(Node*head){
+  Node*prev = NULL;
+  Node*curr = head;
+  Node*forward = NULL;
+  while(curr!=NULL){
+    forward = curr -> next;
+    curr -> next = prev;
+    prev = curr;
+    curr = forward;
+  }
+  return prev;
+}
+
+//recursive method
+void reverse(Node*&head , Node*prev,Node*curr){
+    if(curr == NULL){
+        return head; 
+    }
+    Node* forward = curr -> next;
+    reverse(head,forward,curr);
+    curr -> next = prev;
+}
+
+Node*ReverseLL(Node*head){
+  Node*prev = NULL;
+  Node*curr = head;
+reverse(head,prev,curr);
+return ;
+}
